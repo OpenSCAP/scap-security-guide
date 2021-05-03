@@ -20,8 +20,8 @@ identifiers:
     cce@sle15: CCE-85712-8
 
 references:
-    nist: CM-6(b),CM-6(iv)
     disa: CCI-000366
+    nist: CM-6(b),CM-6(iv)
     stig@sle15: SLES-15-020101
 
 ocil_clause: '/etc/sudoers file does not restrict sudo access to authorized personnel'

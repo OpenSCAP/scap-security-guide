@@ -412,6 +412,18 @@ endif()
 
 ssg_define_guide_and_table_tests()
 
+# Automatically invoke rule_dir_json.py on each build. This takes a little
+# bit of time, but with recently added utilities, becomes useful to have.
+add_custom_command(
+    OUTPUT "${CMAKE_BINARY_DIR}/rule_dirs.json"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/rule_dir_json.py" --output "${CMAKE_BINARY_DIR}/rule_dirs.json" --root "${CMAKE_SOURCE_DIR}"
+    COMMENT "generating rule_dirs.json"
+)
+add_custom_target(
+    rule_dirs ALL
+    DEPENDS "${CMAKE_BINARY_DIR}/rule_dirs.json"
+)
+
 install(FILES "${CMAKE_SOURCE_DIR}/LICENSE"
     DESTINATION ${CMAKE_INSTALL_DOCDIR})
 install(FILES "${CMAKE_SOURCE_DIR}/README.md"

@@ -16,8 +16,8 @@ identifiers:
     cce@rhel8: CCE-83663-5
 
 references:
-    srg: SRG-OS-000206-GPOS-00084
     disa: CCI-001314
+    srg: SRG-OS-000206-GPOS-00084
     stigid@rhel8: RHEL-08-010240
 
 ocil_clause: '{{{ ocil_clause_file_permissions(file="/var/log", perms="drwxr-xr-x") }}}'

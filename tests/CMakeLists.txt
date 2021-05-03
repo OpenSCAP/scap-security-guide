@@ -71,3 +71,45 @@ add_test(
     COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/test_macros_oval.py" "--verbose"
 )
 set_tests_properties("macros-oval" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-empty_identifiers"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "empty_identifiers" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-empty_identifiers" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-invalid_identifiers"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "invalid_identifiers" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-invalid_identifiers" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-int_identifiers"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "int_identifiers" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-int_identifiers" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-empty_references"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "empty_references" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-empty_references" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-int_references"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "int_references" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-int_references" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-duplicate_subkeys"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "duplicate_subkeys" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-duplicate_subkeys" PROPERTIES LABELS quick)
+
+add_test(
+    NAME "fix_rules-sort_subkeys"
+    COMMAND env "PYTHONPATH=$ENV{PYTHONPATH}" "${PYTHON_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/utils/fix_rules.py" "--dry-run" "sort_subkeys" "${CMAKE_SOURCE_DIR}"
+)
+set_tests_properties("fix_rules-sort_subkeys" PROPERTIES LABELS quick)

@@ -17,8 +17,8 @@ identifiers:
     cce@rhel8: CCE-82722-0
 
 references:
-    srg: SRG-OS-000480-GPOS-00227
     ospp: FIA_UAU.5,FTP_ITC_EXT.1
+    srg: SRG-OS-000480-GPOS-00227
 
 {{{ complete_ocil_entry_package(package='openssh-clients') }}}
 

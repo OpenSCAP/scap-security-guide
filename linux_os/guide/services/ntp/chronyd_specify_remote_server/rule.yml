@@ -26,10 +26,10 @@ identifiers:
     cce@rhel8: CCE-82873-1
 
 references:
+    anssi: BP28(R43)
     cis@rhel7: 2.2.1.3
     cis@rhel8: 2.2.1.2
     ism: 0988,1405
-    anssi: BP28(R43)
 
 ocil_clause: 'a remote time server is not configured'
 

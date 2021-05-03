@@ -19,15 +19,15 @@ rationale: |-
 severity: medium
 
 identifiers:
-    cce@rhel8: CCE-82252-8
     cce@rhcos4: CCE-82528-1
+    cce@rhel8: CCE-82252-8
 
 references:
+    cis@rhel8: 1.6.1
+    disa: CCI-000366
     ospp: FMT_SMF_EXT.1
     srg: SRG-OS-000480-GPOS-00227
-    cis@rhel8: 1.6.1
     stigid@rhel8: RHEL-08-010674
-    disa: CCI-000366
 
 ocil_clause: Storage is not set to none
 
