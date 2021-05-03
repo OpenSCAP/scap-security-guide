@@ -25,11 +25,11 @@ identifiers:
     cce@rhel8: CCE-82077-9
 
 references:
+    disa: CCI-001764
     nist: CM-7(a),CM-7(b),CM-6(a),AC-6,AC-6(1),MP-7
     nist-csf: PR.IP-1,PR.PT-2,PR.PT-3
     srg: SRG-OS-000368-GPOS-00154
     stigid@rhel8: RHEL-08-040126
-    disa: CCI-001764
 
 platform: machine
 

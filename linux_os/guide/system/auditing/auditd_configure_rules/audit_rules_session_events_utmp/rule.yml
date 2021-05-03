@@ -28,10 +28,10 @@ identifiers:
     cce@sle15: CCE-85714-4
 
 references:
-    stigid@sle15: SLES-15-030760
-    srg: SRG-OS-000472-GPOS-00217
     disa: CCI-000172
     nist: AU-12(c),AU-12.1(iv)
+    srg: SRG-OS-000472-GPOS-00217
+    stigid@sle15: SLES-15-030760
 
 ocil_clause: 'Audit rule is not present'
 

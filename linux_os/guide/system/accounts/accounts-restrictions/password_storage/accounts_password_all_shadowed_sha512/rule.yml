@@ -29,11 +29,11 @@ identifiers:
     cce@sle15: CCE-85566-8
 
 references:
+    disa: CCI-000196,CCI-000803
     nist: IA-5(1)(c),IA-5(1).1(v),IA-7,IA-7.1
+    srg:  SRG-OS-000073-GPOS-00041,SRG-OS-000120-GPOS-00061
     stigid@sle12: SLES-12-010220
     stigid@sle15: SLES-15-020180
-    disa: CCI-000196,CCI-000803
-    srg:  SRG-OS-000073-GPOS-00041,SRG-OS-000120-GPOS-00061
 
 
 ocil_clause: 'passwords hashed with an unauthorized algorithm are found in /etc/shadow'

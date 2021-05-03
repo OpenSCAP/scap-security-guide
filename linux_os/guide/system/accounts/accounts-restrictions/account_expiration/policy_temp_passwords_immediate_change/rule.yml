@@ -32,8 +32,8 @@ identifiers:
 references:
     disa: CCI-002041
     nist@sle12: IA-5(1)(f)
-    stigid@sle12: SLES-12-010660
     srg: SRG-OS-000380-GPOS-00165
+    stigid@sle12: SLES-12-010660
 
 ocil_clause: 'any temporary or emergency accounts have no expiration date set or do not expire within a documented time frame'
 
