@@ -39,7 +39,7 @@ references:
     nist@sle15: CM-5(6),CM-5(6).1
     disa@sle15: CCI-001499
     stigid@sle15: SLES-15-010360
-    srg@sle15: SRG-OS-000259-GPOS-00100
+    srg: SRG-OS-000259-GPOS-00100
 
 ocil_clause: 'any of these directories are not owned by root'
 
