@@ -41,7 +41,7 @@ references:
     stigid@sle15: SLES-15-010360
     srg@sle15: SRG-OS-000259-GPOS-00100
 
-ocil_clause: 'any of these files are not owned by root'
+ocil_clause: 'any of these directories are not owned by root'
 
 ocil: |-
     System commands are stored in the following directories:
