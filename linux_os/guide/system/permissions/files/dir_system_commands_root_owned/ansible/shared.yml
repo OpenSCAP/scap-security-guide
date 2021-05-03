@@ -3,16 +3,12 @@
 # strategy = restrict
 # complexity = medium
 # disruption = medium
-- name: "Read system commands directories without root ownership"
-  command: "find -L /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ! -user root -type d"
-  register: system_commands_dirs_not_owned_by_root
-  changed_when: False
-  failed_when: False
-  check_mode: no
 
-- name: "Set ownership of system libraries to root"
-  file:
-    path: "{{ item }}"
-    owner: "root"
-  with_items: "{{ system_commands_dirs_not_owned_by_root.stdout_lines }}"
-  when: system_commands_dirs_not_owned_by_root.stdout_lines | length > 0
+-  name: "Set ownership of directories that contain system commands to root"
+   file: 
+     path: "{{ item }}"
+     owner: "root"
+     recurse: "yes"
+     state: "directory"
+     follow: "no"
+   with_items: [ '/bin','/sbin','/usr/bin','usr/sbin','usr/local/bin','/usr/local/sbin'  ]
