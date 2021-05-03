@@ -1,7 +1,5 @@
 #!/bin/bash
   
-#remediation none
-
 for SYSCMDDIRS in  /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 do
    if [[ -d $SYSCMDDIRS ]]
