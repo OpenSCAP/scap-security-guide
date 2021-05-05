@@ -6,7 +6,6 @@ title: 'Verify that system commands directories have root ownership'
 
 description: |-
     System commands are stored in the following directories by default:
-    by default:
     <pre>/bin 
     /sbin 
     /usr/bin 
