@@ -74,3 +74,4 @@ template:
     name: audit_rules_dac_modification
     vars:
         attr: removexattr
+        check_root_user: "true"

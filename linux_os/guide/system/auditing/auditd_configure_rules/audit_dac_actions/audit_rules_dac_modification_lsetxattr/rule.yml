@@ -68,3 +68,4 @@ template:
     name: audit_rules_dac_modification
     vars:
         attr: lsetxattr
+        check_root_user: "true"
