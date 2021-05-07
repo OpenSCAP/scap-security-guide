@@ -22,10 +22,10 @@ ssg_build_html_anssirefs_table(${PRODUCT} "bp28_intermediary")
 ssg_build_html_anssirefs_table(${PRODUCT} "bp28_enhanced")
 ssg_build_html_anssirefs_table(${PRODUCT} "bp28_high")
 
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_l1_server")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_l2_server")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_l1_workstation")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_l2_workstation")
+ssg_build_html_cisrefs_table(${PRODUCT} "cis_level1_server")
+ssg_build_html_cisrefs_table(${PRODUCT} "cis_level2_server")
+ssg_build_html_cisrefs_table(${PRODUCT} "cis_level1_workstation")
+ssg_build_html_cisrefs_table(${PRODUCT} "cis_level2_workstation")
 
 ssg_build_html_cce_table(${PRODUCT})
 
