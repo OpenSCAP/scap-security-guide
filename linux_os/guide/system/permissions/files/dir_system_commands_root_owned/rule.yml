@@ -54,4 +54,4 @@ ocil: |-
     /usr/local/sbin</pre>
     For each of these directories, run the following command to find directories not
     owned by root:
-    <pre>$ sudo find -L <i>$DIR</i> ! -user root -type d -exec chown root {} \;</pre>
+    <pre>$ sudo find -L <i>$DIR</i> ! -user root -type d</pre>
