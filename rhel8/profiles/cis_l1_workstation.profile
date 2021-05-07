@@ -8,11 +8,13 @@ metadata:
 
 reference: https://www.cisecurity.org/benchmark/red_hat_linux/
 
-title: 'CIS Red Hat Enterprise Linux 8 Benchmark'
+title: 'CIS Red Hat Enterprise Linux 8 Benchmark (Level 1 - Workstation)'
 
 description: |-
     This profile defines a baseline that aligns to the Center for Internet Security®
     Red Hat Enterprise Linux 8 Benchmark™, v1.0.0, released 09-30-2019.
+
+    This profile aligns with the CIS Level 1 - Workstation benchmark.
 
     This profile includes Center for Internet Security®
     Red Hat Enterprise Linux 8 CIS Benchmarks™ content.
@@ -30,9 +32,6 @@ selections:
 
     #### 1.1.1.1 Ensure mounting cramfs filesystems is disabled (Scored)
     - kernel_module_cramfs_disabled
-
-    #### 1.1.1.2 Ensure mounting of vFAT filesystems is limited (Not Scored)
-
 
     #### 1.1.1.3 Ensure mounting of squashfs filesystems is disabled (Scored)
     - kernel_module_squashfs_disabled
@@ -52,12 +51,6 @@ selections:
     ### 1.1.5 Ensure noexec option set on /tmp partition (Scored)
     - mount_option_tmp_noexec
 
-    ### 1.1.6 Ensure separate partition exists for /var (Scored)
-    - partition_for_var
-
-    ### 1.1.7 Ensure separate partition exists for /var/tmp (Scored)
-    - partition_for_var_tmp
-
     ### 1.1.8 Ensure nodev option set on /var/tmp partition (Scored)
     - mount_option_var_tmp_nodev
 
@@ -66,15 +59,6 @@ selections:
 
     ### 1.1.10 Ensure noexec option set on /var/tmp partition (Scored)
     - mount_option_var_tmp_noexec
-
-    ### 1.1.11 Ensure separate partition exists for /var/log (Scored)
-    - partition_for_var_log
-
-    ### 1.1.12 Ensure separate partition exists for /var/log/audit (Scored)
-    - partition_for_var_log_audit
-
-    ### 1.1.13 Ensure separate partition exists for /home (Scored)
-    - partition_for_home
 
     ### 1.1.14 Ensure nodev option set on /home partition (Scored)
     - mount_option_home_nodev
@@ -99,12 +83,6 @@ selections:
 
     ### 1.1.21 Ensure sticky bit is set on all world-writable directories (Scored)
     - dir_perms_world_writable_sticky_bits
-
-    ### 1.1.22 Disable Automounting (Scored)
-    - service_autofs_disabled
-
-    ### 1.1.23 Disable USB Storage (Scored)
-    - kernel_module_usb-storage_disabled
 
     ## 1.2 Configure Software Updates
 
@@ -186,33 +164,6 @@ selections:
     ### 1.6.2 Ensure address space layout randomization (ASLR) is enabled
     - sysctl_kernel_randomize_va_space
 
-    ## 1.7 Mandatory Access Control
-
-    ### 1.7.1 Configure SELinux
-
-    #### 1.7.1.1 Ensure SELinux is installed (Scored)
-    - package_libselinux_installed
-
-    #### 1.7.1.2 Ensure SELinux is not disabled in bootloader configuration (Scored)
-    - grub2_enable_selinux
-
-    #### 1.7.1.3 Ensure SELinux policy is configured (Scored)
-    - var_selinux_policy_name=targeted
-    - selinux_policytype
- 
-    #### 1.7.1.4 Ensure the SELinux state is enforcing (Scored)
-    - var_selinux_state=enforcing
-    - selinux_state
-
-    #### 1.7.1.5 Ensure no unconfied services exist (Scored)
-    - selinux_confinement_of_daemons
-
-    #### 1.7.1.6 Ensure SETroubleshoot is not installed (Scored)
-    - package_setroubleshoot_removed
-
-    #### 1.7.1.7 Ensure the MCS Translation Service (mcstrans) is not installed (Scored)
-    - package_mcstrans_removed
-
     ## Warning Banners
 
     ### 1.8.1 Command Line Warning Baners
@@ -247,12 +198,8 @@ selections:
     ## 1.9 Ensure updates, patches, and additional security software are installed (Scored)
     - security_patches_up_to_date
 
-    ## 1.10 Ensure system-wide crypto policy is not legacy (Scored)
-    - var_system_crypto_policy=future
-    - configure_crypto_policy
-
-    ## 1.11 Ensure system-wide crytpo policy is FUTURE or FIPS (Scored)
-    # Previously addressed via 'configure_crypto_policy' rule
+    ## 1.10 Ensure system-wide crypto policy is not LEGACY (Scored)
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6962
 
     # Services
 
@@ -272,10 +219,6 @@ selections:
     - service_chronyd_enabled
     - chronyd_specify_remote_server
     - chronyd_run_as_chrony_user
-
-    ### 2.2.2 Ensure X Window System is not installed (Scored)
-    - package_xorg-x11-server-common_removed
-    - xwindows_runlevel_target
 
     ### 2.2.3 Ensure rsync service is not enabled (Scored)
     - service_rsyncd_disabled
@@ -315,9 +258,6 @@ selections:
 
     ### 2.2.15 Ensure DHCP Server is not enabled (Scored)
     - service_dhcpd_disabled
-
-    ### 2.2.16 Ensure CUPS is not enabled (Scored)
-    - service_cups_disabled
 
     ### 2.2.17 Ensure NIS Server is not enabled (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5232
@@ -420,20 +360,6 @@ selections:
     #### net.ipv6.conf.default.accept_ra = 0
     - sysctl_net_ipv6_conf_default_accept_ra
 
-    ## 3.3 Uncommon Network Protocols
-
-    ### 3.3.1 Ensure DCCP is disabled (Scored)
-    - kernel_module_dccp_disabled
-
-    ### Ensure SCTP is disabled (Scored)
-    - kernel_module_sctp_disabled
-
-    ### 3.3.3 Ensure RDS is disabled (Scored)
-    - kernel_module_rds_disabled
-
-    ### 3.3.4 Ensure TIPC is disabled (Scored)
-    - kernel_module_tipc_disabled
-
     ## 3.4 Firewall Configuration
 
     ### 3.4.1 Ensure Firewall software is installed
@@ -529,150 +455,11 @@ selections:
     #####           configured (Not Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5260
 
-    ## 3.5 Ensure wireless interfaces are disabled (Scored)
-    - wireless_disable_interfaces
-
-    ## 3.6 Disable IPv6 (Not Scored)
-    - kernel_module_ipv6_option_disabled
+    ##### 3.4.4.2.4 Ensure IPv6 firewall rules exist for all open ports
+    #####           (Not Scored)
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6972
 
     # Logging and Auditing
-
-    ## 4.1 Configure System Accounting (auditd)
-
-    ### 4.1.1 Ensure auditing is enabled
-
-    #### 4.1.1.1 Ensure auditd is installed (Scored)
-    - package_audit_installed
-
-    #### 4.1.1.2 Ensure auditd service is enabled (Scored)
-    - service_auditd_enabled
-
-    #### 4.1.1.3 Ensure auditing for processes that start prior to audit
-    ####         is enabled (Scored)
-    - grub2_audit_argument
-
-    #### 4.1.1.4 Ensure audit_backlog_limit is sufficient (Scored)
-    - grub2_audit_backlog_limit_argument
-
-    ### 4.1.2 Configure Data Retention
-
-    #### 4.1.2.1 Ensure audit log storage size is configured (Scored)
-    - auditd_data_retention_max_log_file
-
-    #### 4.1.2.2 Ensure audit logs are not automatically deleted (Scored)
-    - auditd_data_retention_max_log_file_action
-
-    #### 4.1.2.3 Ensure system is disabled when audit logs are full (Scored)
-    - var_auditd_space_left_action=email
-    - auditd_data_retention_space_left_action
-
-    ##### action_mail_acct = root
-    - var_auditd_action_mail_acct=root
-    - auditd_data_retention_action_mail_acct
-
-    ##### admin_space_left_action = halt
-    - var_auditd_admin_space_left_action=halt
-    - auditd_data_retention_admin_space_left_action 
-
-    ### 4.1.3 Ensure changes to system administration scope
-    ###       (sudoers) is collected (Scored)
-    - audit_rules_sysadmin_actions
-
-    ### 4.1.4 Ensure login and logout events are collected (Scored)
-    - audit_rules_login_events_faillock
-    - audit_rules_login_events_lastlog
-
-    ### 4.1.5 Ensure session initiation information is collected (Scored)
-    - audit_rules_session_events
-
-    ### 4.1.6 Ensure events that modify date and time information
-    ###       are collected (Scored)
-    #### adjtimex
-    - audit_rules_time_adjtimex
-
-    #### settimeofday
-    - audit_rules_time_settimeofday
-
-    #### stime
-    - audit_rules_time_stime
-
-    #### clock_settime
-    - audit_rules_time_clock_settime
-
-    #### -w /etc/localtime -p wa
-    - audit_rules_time_watch_localtime
-
-    ### 4.1.7 Ensure events that modify the system's Mandatory
-    ###       Access Control are collected (Scored)
-    #### -w /etc/selinux/ -p wa
-    - audit_rules_mac_modification
-
-    #### -w /usr/share/selinux/ -p wa
-    # NEED RULE - https://github.com/ComplianceAsCode/content/issues/5264
-
-    ### 4.1.8 Ensure events that modify the system's network
-    ###       enironment are collected (Scored)
-    - audit_rules_networkconfig_modification
-
-    ### 4.1.9 Ensure discretionary access control permission modification
-    ###       events are collected (Scored)
-    - audit_rules_dac_modification_chmod
-    - audit_rules_dac_modification_fchmod
-    - audit_rules_dac_modification_fchmodat
-    - audit_rules_dac_modification_chown
-    - audit_rules_dac_modification_fchown
-    - audit_rules_dac_modification_fchownat
-    - audit_rules_dac_modification_lchown
-    - audit_rules_dac_modification_setxattr
-    - audit_rules_dac_modification_lsetxattr
-    - audit_rules_dac_modification_fsetxattr
-    - audit_rules_dac_modification_removexattr
-    - audit_rules_dac_modification_lremovexattr
-    - audit_rules_dac_modification_fremovexattr
-    
-    ### 4.1.10 Ensure unsuccessful unauthorized file access attempts are
-    ###        collected (Scored)
-    - audit_rules_unsuccessful_file_modification_creat
-    - audit_rules_unsuccessful_file_modification_open
-    - audit_rules_unsuccessful_file_modification_openat
-    - audit_rules_unsuccessful_file_modification_truncate
-    - audit_rules_unsuccessful_file_modification_ftruncate
-    # Opinionated selection
-    - audit_rules_unsuccessful_file_modification_open_by_handle_at
-
-    ### 4.1.11 Ensure events that modify user/group information are
-    ###        collected (Scored)
-    - audit_rules_usergroup_modification_passwd
-    - audit_rules_usergroup_modification_group
-    - audit_rules_usergroup_modification_gshadow
-    - audit_rules_usergroup_modification_shadow
-    - audit_rules_usergroup_modification_opasswd
-
-    ### 4.1.12 Ensure successful file system mounts are collected (Scored)
-    - audit_rules_media_export
-
-    ### 4.1.13 Ensure use of privileged commands is collected (Scored)
-    - audit_rules_privileged_commands
-
-    ### 4.1.14 Ensure file deletion events by users are collected
-    ###        (Scored)
-    - audit_rules_file_deletion_events_unlink
-    - audit_rules_file_deletion_events_unlinkat
-    - audit_rules_file_deletion_events_rename
-    - audit_rules_file_deletion_events_renameat
-    # Opinionated selection
-    - audit_rules_file_deletion_events_rmdir
-
-    ### 4.1.15 Ensure kernel module loading and unloading is collected
-    ###        (Scored)
-    - audit_rules_kernel_module_loading
-
-    ### 4.1.16 Ensure system administrator actions (sudolog) are
-    ###        collected (Scored)
-    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5516
-
-    ### 4.1.17 Ensure the audit configuration is immutable (Scored)
-    - audit_rules_immutable
 
     ## 4.2 Configure Logging
 
@@ -708,7 +495,6 @@ selections:
     ####         log files (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5521
 
-
     #### 4.2.2.3 Ensure journald is configured to write logfiles to
     ####         persistent disk (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5522
@@ -724,7 +510,6 @@ selections:
 
     ### 5.1.1 Ensure cron daemon is enabled (Scored)
     - service_crond_enabled
-
 
     ### 5.1.2 Ensure permissions on /etc/crontab are configured (Scored)
     # chown root:root /etc/crontab
@@ -769,7 +554,7 @@ selections:
     - file_permissions_cron_d
 
     ### 5.1.8 Ensure at/cron is restricted to authorized users (Scored)
-
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6973
 
     ## 5.2 SSH Server Configuration
 
@@ -782,7 +567,7 @@ selections:
     - file_permissions_sshd_config
 
     ### 5.2.2 Ensure SSH access is limited (Scored) 
-
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6974
 
     ### 5.2.3 Ensure permissions on SSH private host key files are
     ###       configured (Scored)
@@ -798,7 +583,7 @@ selections:
     ### 5.2.5 Ensure SSH LogLevel is appropriate (Scored)
     - sshd_set_loglevel_info
 
-    ### 5.2.6 Ensure SSH X11 forward is disabled (Scored)
+    ### 5.2.6 Ensure SSH X11 forwarding is disabled (Scored)
     - sshd_disable_x11_forwarding
 
     ### 5.2.7 Ensure SSH MaxAuthTries is set to 4 or less (Scored)
@@ -839,9 +624,6 @@ selections:
     ### 5.2.16 Ensure SSH PAM is enabled (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5526
 
-    ### 5.2.17 Ensure SSH AllowTcpForwarding is disabled (Scored)
-    - sshd_disable_tcp_forwarding
-
     ### 5.2.18 Ensure SSH MaxStarups is configured (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5528
 
@@ -855,7 +637,7 @@ selections:
     ## 5.3 Configure authselect
 
 
-    ### 5.3.1 Create custom authselectet profile (Scored)
+    ### 5.3.1 Create custom authselect profile (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5530
 
     ### 5.3.2 Select authselect profile (Scored)
@@ -892,7 +674,7 @@ selections:
 
     ### 5.5.1 Set Shadow Password Suite Parameters
 
-    #### 5.5.1 Ensure password expiration is 365 days or less (Scored)
+    #### 5.5.1.1 Ensure password expiration is 365 days or less (Scored)
     - var_accounts_maximum_age_login_defs=365
     - accounts_maximum_age_login_defs
 
@@ -944,10 +726,6 @@ selections:
 
     ## 6.1 System File Permissions
 
-    ### 6.1.1 Audit system file permissions (Not Scored)
-    - rpm_verify_permissions
-    - rpm_verify_ownership
-    
     ### 6.1.2 Ensure permissions on /etc/passwd are configured (Scored)
     # chown root:root /etc/passwd
     - file_owner_etc_passwd
@@ -1028,6 +806,9 @@ selections:
     - file_permissions_unauthorized_sgid
 
     ## 6.2 User and Group Settings
+
+    ### 6.2.1 Ensure password fields are not empty (Scored)
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6975
 
     ### 6.2.2 Ensure no legacy "+" entries exist in /etc/passwd (Scored)
     - no_legacy_plus_entries_etc_passwd
