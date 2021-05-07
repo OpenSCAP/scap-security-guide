@@ -43,6 +43,9 @@ selections:
     - ocp_allowed_registries
     - audit_log_forwarding_enabled
 
+    # RA-5 VULNERABILITY SCANNING
+    - compliancesuite_exists
+
     # SC-28 (1) PROTECTION OF INFORMATION AT REST | CRYPTOGRAPHIC PROTECTION
     - api_server_encryption_provider_config
     - api_server_encryption_provider_cipher
