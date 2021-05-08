@@ -8,11 +8,13 @@ metadata:
 
 reference: https://www.cisecurity.org/benchmark/red_hat_linux/
 
-title: 'CIS Red Hat Enterprise Linux 8 Benchmark'
+title: 'CIS Red Hat Enterprise Linux 8 Benchmark (Level 2 - Workstation)'
 
 description: |-
     This profile defines a baseline that aligns to the Center for Internet Security®
     Red Hat Enterprise Linux 8 Benchmark™, v1.0.0, released 09-30-2019.
+
+    This profile aligns with the CIS Level 2 - Workstation benchmark.
 
     This profile includes Center for Internet Security®
     Red Hat Enterprise Linux 8 CIS Benchmarks™ content.
@@ -32,7 +34,7 @@ selections:
     - kernel_module_cramfs_disabled
 
     #### 1.1.1.2 Ensure mounting of vFAT filesystems is limited (Not Scored)
-
+    # REMOVED - https://github.com/ComplianceAsCode/content/pull/6613
 
     #### 1.1.1.3 Ensure mounting of squashfs filesystems is disabled (Scored)
     - kernel_module_squashfs_disabled
@@ -207,9 +209,6 @@ selections:
     #### 1.7.1.5 Ensure no unconfied services exist (Scored)
     - selinux_confinement_of_daemons
 
-    #### 1.7.1.6 Ensure SETroubleshoot is not installed (Scored)
-    - package_setroubleshoot_removed
-
     #### 1.7.1.7 Ensure the MCS Translation Service (mcstrans) is not installed (Scored)
     - package_mcstrans_removed
 
@@ -247,11 +246,11 @@ selections:
     ## 1.9 Ensure updates, patches, and additional security software are installed (Scored)
     - security_patches_up_to_date
 
-    ## 1.10 Ensure system-wide crypto policy is not legacy (Scored)
+    ## 1.10 Ensure system-wide crypto policy is not LEGACY (Scored)
     - var_system_crypto_policy=future
     - configure_crypto_policy
 
-    ## 1.11 Ensure system-wide crytpo policy is FUTURE or FIPS (Scored)
+    ## 1.11 Ensure system-wide crypto policy is FUTURE or FIPS (Scored)
     # Previously addressed via 'configure_crypto_policy' rule
 
     # Services
@@ -272,10 +271,6 @@ selections:
     - service_chronyd_enabled
     - chronyd_specify_remote_server
     - chronyd_run_as_chrony_user
-
-    ### 2.2.2 Ensure X Window System is not installed (Scored)
-    - package_xorg-x11-server-common_removed
-    - xwindows_runlevel_target
 
     ### 2.2.3 Ensure rsync service is not enabled (Scored)
     - service_rsyncd_disabled
@@ -425,7 +420,7 @@ selections:
     ### 3.3.1 Ensure DCCP is disabled (Scored)
     - kernel_module_dccp_disabled
 
-    ### Ensure SCTP is disabled (Scored)
+    ### 3.3.2 Ensure SCTP is disabled (Scored)
     - kernel_module_sctp_disabled
 
     ### 3.3.3 Ensure RDS is disabled (Scored)
@@ -528,6 +523,10 @@ selections:
     ##### 3.4.4.2.3 Ensure IPv6 outbound and established connections are
     #####           configured (Not Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5260
+
+    ##### 3.4.4.2.4 Ensure IPv6 firewall rules exist for all open ports
+    #####           (Not Scored)
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6972
 
     ## 3.5 Ensure wireless interfaces are disabled (Scored)
     - wireless_disable_interfaces
@@ -708,7 +707,6 @@ selections:
     ####         log files (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5521
 
-
     #### 4.2.2.3 Ensure journald is configured to write logfiles to
     ####         persistent disk (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5522
@@ -717,6 +715,7 @@ selections:
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5523
 
     ## 4.3 Ensure logrotate is configured (Not Scored)
+    # REMOVED - https://github.com/ComplianceAsCode/content/pull/6693
 
     # 5 Access, Authentication and Authorization
 
@@ -724,7 +723,6 @@ selections:
 
     ### 5.1.1 Ensure cron daemon is enabled (Scored)
     - service_crond_enabled
-
 
     ### 5.1.2 Ensure permissions on /etc/crontab are configured (Scored)
     # chown root:root /etc/crontab
@@ -769,7 +767,7 @@ selections:
     - file_permissions_cron_d
 
     ### 5.1.8 Ensure at/cron is restricted to authorized users (Scored)
-
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6973
 
     ## 5.2 SSH Server Configuration
 
@@ -782,7 +780,7 @@ selections:
     - file_permissions_sshd_config
 
     ### 5.2.2 Ensure SSH access is limited (Scored) 
-
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6974
 
     ### 5.2.3 Ensure permissions on SSH private host key files are
     ###       configured (Scored)
@@ -798,7 +796,7 @@ selections:
     ### 5.2.5 Ensure SSH LogLevel is appropriate (Scored)
     - sshd_set_loglevel_info
 
-    ### 5.2.6 Ensure SSH X11 forward is disabled (Scored)
+    ### 5.2.6 Ensure SSH X11 forwarding is disabled (Scored)
     - sshd_disable_x11_forwarding
 
     ### 5.2.7 Ensure SSH MaxAuthTries is set to 4 or less (Scored)
@@ -855,7 +853,7 @@ selections:
     ## 5.3 Configure authselect
 
 
-    ### 5.3.1 Create custom authselectet profile (Scored)
+    ### 5.3.1 Create custom authselect profile (Scored)
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5530
 
     ### 5.3.2 Select authselect profile (Scored)
@@ -892,7 +890,7 @@ selections:
 
     ### 5.5.1 Set Shadow Password Suite Parameters
 
-    #### 5.5.1 Ensure password expiration is 365 days or less (Scored)
+    #### 5.5.1.1 Ensure password expiration is 365 days or less (Scored)
     - var_accounts_maximum_age_login_defs=365
     - accounts_maximum_age_login_defs
 
@@ -1028,6 +1026,9 @@ selections:
     - file_permissions_unauthorized_sgid
 
     ## 6.2 User and Group Settings
+
+    ### 6.2.1 Ensure password fields are not empty (Scored)
+    # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/6975
 
     ### 6.2.2 Ensure no legacy "+" entries exist in /etc/passwd (Scored)
     - no_legacy_plus_entries_etc_passwd

@@ -10,9 +10,13 @@ ssg_build_product(${PRODUCT})
 
 ssg_build_html_table_by_ref(${PRODUCT} "nist")
 ssg_build_html_table_by_ref(${PRODUCT} "cui")
-ssg_build_html_table_by_ref(${PRODUCT} "cis")
 ssg_build_html_table_by_ref(${PRODUCT} "pcidss")
 ssg_build_html_table_by_ref(${PRODUCT} "anssi")
+
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level1_server")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level2_server")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level1_workstation")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level2_workstation")
 
 ssg_build_html_nistrefs_table(${PRODUCT} "standard")
 ssg_build_html_nistrefs_table(${PRODUCT} "ospp")

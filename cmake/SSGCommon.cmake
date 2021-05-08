@@ -478,7 +478,7 @@ macro(ssg_build_xccdf_final PRODUCT)
         if("${PRODUCT}" MATCHES "rhel7")
             set(REFERENCES_CHECK_PROFILE_LIST "cis anssi_nt28_high hipaa")
         elseif("${PRODUCT}" MATCHES "rhel8")
-            set(REFERENCES_CHECK_PROFILE_LIST "cis anssi_bp28_high hipaa")
+            set(REFERENCES_CHECK_PROFILE_LIST "cis_level1_server cis_level2_server cis_level1_workstation cis_level2_workstation anssi_bp28_high hipaa")
         endif()
         add_test(
                 NAME "missing-references-ssg-${PRODUCT}-xccdf.xml"
