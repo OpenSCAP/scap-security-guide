@@ -13,6 +13,11 @@ ssg_build_html_table_by_ref(${PRODUCT} "cui")
 ssg_build_html_table_by_ref(${PRODUCT} "pcidss")
 ssg_build_html_table_by_ref(${PRODUCT} "anssi")
 
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level1_server")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level2_server")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level1_workstation")
+ssg_build_html_table_by_ref(${PRODUCT} "cis_level2_workstation")
+
 ssg_build_html_nistrefs_table(${PRODUCT} "standard")
 ssg_build_html_nistrefs_table(${PRODUCT} "ospp")
 ssg_build_html_nistrefs_table(${PRODUCT} "stig")
@@ -21,11 +26,6 @@ ssg_build_html_anssirefs_table(${PRODUCT} "bp28_minimal")
 ssg_build_html_anssirefs_table(${PRODUCT} "bp28_intermediary")
 ssg_build_html_anssirefs_table(${PRODUCT} "bp28_enhanced")
 ssg_build_html_anssirefs_table(${PRODUCT} "bp28_high")
-
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_level1_server")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_level2_server")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_level1_workstation")
-ssg_build_html_cisrefs_table(${PRODUCT} "cis_level2_workstation")
 
 ssg_build_html_cce_table(${PRODUCT})
 
