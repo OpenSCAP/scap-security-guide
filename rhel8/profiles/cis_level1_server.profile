@@ -519,6 +519,7 @@ selections:
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5523
 
     ## 4.3 Ensure logrotate is configured (Not Scored)
+    # REMOVED - https://github.com/ComplianceAsCode/content/pull/6693
 
     # 5 Access, Authentication and Authorization
 

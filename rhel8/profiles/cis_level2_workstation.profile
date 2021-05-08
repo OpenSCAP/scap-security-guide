@@ -34,8 +34,7 @@ selections:
     - kernel_module_cramfs_disabled
 
     #### 1.1.1.2 Ensure mounting of vFAT filesystems is limited (Not Scored)
-    # Limiting vFAT mounting breaks EFI booting
-    # Disabled by commit eea787e1453b19aa949903c39189479538fbbab9
+    # REMOVED - https://github.com/ComplianceAsCode/content/pull/6613
 
     #### 1.1.1.3 Ensure mounting of squashfs filesystems is disabled (Scored)
     - kernel_module_squashfs_disabled
@@ -716,6 +715,7 @@ selections:
     # NEEDS RULE - https://github.com/ComplianceAsCode/content/issues/5523
 
     ## 4.3 Ensure logrotate is configured (Not Scored)
+    # REMOVED - https://github.com/ComplianceAsCode/content/pull/6693
 
     # 5 Access, Authentication and Authorization
 
